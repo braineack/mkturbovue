@@ -11,14 +11,9 @@ Vue.component('navbar-component', {
 
 Vue.component('sidebar-offcanvas', {
 props: ['nav'],
-  template: '<nav><div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">' +
-    '<div class="list-group">' +
+  template:'<div class="list-group">' +
       '<a v-for="item in nav" class="list-group-item border-0 list-group-item-action rounded my-1" :href="item.url">{{item.link}}</a>' +
-    '</div>' +
-  '</div>' +
-  '<p class="float-left hidden-md-up">' +
-    '<button type="button" class="btn btn-pink btn-sm" data-toggle="offcanvas">Toggle nav  &raquo;</button>' +
-  '</p></nav>',
+    '</div>',
 })
 
 Vue.component('footer-component', {
