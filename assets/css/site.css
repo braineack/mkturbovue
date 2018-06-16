@@ -47,6 +47,24 @@ span.sale {
   text-decoration: line-through;
 }
 
+.modal {
+  display: block;
+}
+
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-leave-active {
+  opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
 
 h1.text-uppercase, h2.text-uppercase, h3.text-uppercase, h4.text-uppercase, h5.text-uppercase, h6.text-uppercase {
     letter-spacing: .15em;

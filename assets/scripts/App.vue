@@ -21,25 +21,53 @@ props: ['year'],
   template: '<footer><hr /><p class="mt-5">&copy; Copyright 2017-{{year}} MK Turbo. All Rights Reserved.</p></footer>',
 })
 
+Vue.component('modal', {
+  props: ['modal'],
+  template: '<transition name="modal">' +
+     '<div class="modal fade show">' +
+       '<div class="modal-dialog modal-lg" role="document">' +
+         '<div class="modal-content">' +
+           '<div class="modal-header">' +
+             '<h5 class="modal-title">{{ modal.title }}</h5>' +
+             '<button type="button" class="close" @click="$emit(' + "'close'" + ')">' +
+               '<span aria-hidden="true">&times;</span>' +
+             '</button>' +
+           '</div>' +
+           '<div class="modal-body text-center">' +
+             '<img :src="modal.img" class="img-fluid" :alt="modal.title">' +
+             '<p>{{ modal.caption }}</p>' +
+           '</div>' +
+           '<div class="modal-footer">' +
+             '<button type="button" class="btn btn-secondary" @click="$emit(' + "'close'" + ')">Close</button>' +
+           '</div>' +
+         '</div>' +
+       '</div>' +
+     '</div></transition>',
+})
+
 
 var app = new Vue({
   el: '#app',
   data: function() {
-  return {
-    tagline: 'Make your miata go from Meow to RAWR!',
-    navigation: [
-      {link: '90-93 NA6 Turbo kit', url: '9093NA6.html'},
-      {link: '90-97 NA8 Turbo kit', url: '9097NA8.html'},
-      {link: '99-05 NB1/NB2 Turbo kit', url: '9905NB.html'},
-      {link: 'Oil Line Kit', url: 'oilline.html'},
-      {link: 'Reviews', url: 'reviews.html'},
-      {link: 'FAQs', url: 'faq.html'},
-      {link: 'Dynos', url: 'dynos.html'},
-      {link: 'Installation & Instructions', url: 'installation.html'},
-      {link: 'About MKTurbo', url: 'aboutMKT.html'},
-    ],
-    year: [],
-		};
+    return {
+      tagline: 'Make your miata go from Meow to RAWR!',
+      navigation: [
+        {link: '90-93 NA6 Turbo kit', url: '9093NA6.html'},
+        {link: '90-97 NA8 Turbo kit', url: '9097NA8.html'},
+        {link: '99-05 NB1/NB2 Turbo kit', url: '9905NB.html'},
+        {link: 'Oil Line Kit', url: 'oilline.html'},
+        {link: 'Reviews', url: 'reviews.html'},
+        {link: 'FAQs', url: 'faq.html'},
+        {link: 'Dynos', url: 'dynos.html'},
+        {link: 'Installation & Instructions', url: 'installation.html'},
+        {link: 'About MKTurbo', url: 'aboutMKT.html'},
+      ],
+      year: [],
+      showModal: false,
+      modal: [
+        {title: '', caption: '', img: ''},
+      ],
+  	};
 	},
 
   created: function() {
@@ -50,6 +78,6 @@ var app = new Vue({
    fetchData: function() {
       var d = new Date();
       this.year = d.getFullYear();
-   }
-  },
+   },
+  }
 })

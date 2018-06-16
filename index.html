@@ -40,7 +40,7 @@
           <p class="float-left hidden-md-up">
             <button type="button" class="btn btn-pink btn-sm" data-toggle="offcanvas">Toggle nav  &raquo;</button>
           </p>
-          
+
           <div class="col-12 col-md-9">
             <h6 class="text-uppercase text-gray mt-4">MKTurbo Kits</h6>
             <h3 class="display-4">Why pay more for <strong>less?</strong></h3>
@@ -72,26 +72,7 @@
               <div class="col-6">
                 <div class="card mb-4">
                   <div class="card-block">
-                      <img src="assets/img/dynos/NBdyno_cent.jpg" class="img-fluid" data-toggle="modal" data-target="#centModal">
-                  </div>
-                </div>
-              </div>
-              <div class="modal fade" id="centModal" tabindex="-1" role="dialog" aria-labelledby="centModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">1.8L MKturbo Kit vs. Centrifugal Supercharger Kit</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body text-center">
-                      <img src="assets/img/dynos/NBdyno_cent.jpg" class="img-fluid" alt="Responsive image">
-                      <p>Why wait for peak boost at redline, when you can have it at 3,250RPM?!</p>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
+                      <img src="assets/img/dynos/NBdyno_cent.jpg" class="img-fluid" v-on:click="modal = ({ title: '1.8L MKturbo Kit vs. Centrifugal Supercharger Kit', caption: 'Why wait for peak boost at redline, when you can have it at 3,250RPM?!.', img: 'assets/img/dynos/NBdyno_cent.jpg'}), showModal = true">
                   </div>
                 </div>
               </div>
@@ -99,30 +80,10 @@
               <div class="col-6">
                 <div class="card mb-4">
                   <div class="card-block">
-                      <img src="assets/img/dynos/NBdyno_mp62.jpg" class="img-fluid" data-toggle="modal" data-target="#mp62Modal">
+                      <img src="assets/img/dynos/NBdyno_mp62.jpg" class="img-fluid" v-on:click="modal = ({ title: '1.8L MKturbo Kit vs. mp62 Supercharger Kit', caption: 'Postive displacement has some low-end advtanges, but lacks the torque the turbo can provide throughout.', img: 'assets/img/dynos/NBdyno_mp62.jpg'}), showModal = true">
                   </div>
                 </div>
               </div>
-              <div class="modal fade" id="mp62Modal" tabindex="-1" role="dialog" aria-labelledby="mp62ModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">1.8L MKturbo Kit vs. mp62 Supercharger Kit</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body text-center">
-                      <img src="assets/img/dynos/NBdyno_mp62.jpg" class="img-fluid" alt="Responsive image">
-                      <p>Postive displacement has some low-end advtanges, but lacks the torque the turbo can provide throughout.</p>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             <hr class="mb-5" />
 
@@ -164,16 +125,18 @@
 
           </div><!--/col-12-->
 
-
-
           <footer-component :year="year"></footer-component>
 
         </div>
       </div>
 
-
+      <modal v-if="showModal" @close="showModal = false" :modal="modal"></modal>
+      <transition name="modal">
+        <div v-if="showModal" class="modal-backdrop fade show"></div>
+      </transition>
 
     </div> <!--./app-->
+
     <!-- Bootstrap core JavaScript -->
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
