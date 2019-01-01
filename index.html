@@ -19,8 +19,6 @@
     <!-- Custom styles for this template -->
     <link href="assets/css/site.css" rel="stylesheet">
 
-
-
   </head>
 
 
@@ -31,14 +29,14 @@
 
       <div class="container">
 
-        <div class="row row-offcanvas row-offcanvas-left">
+        <div class="row row-offcanvas row-offcanvas-left" :class="{active: isActive}">
 
           <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
             <sidebar-offcanvas :nav="navigation"></sidebar-offcanvas>
           </div><!--/col-6-->
 
           <p class="float-left hidden-md-up">
-            <button type="button" class="btn btn-pink btn-sm" data-toggle="offcanvas">Toggle nav  &raquo;</button>
+            <button type="button" class="btn btn-pink btn-sm" data-toggle="offcanvas" v-on:click="makeActive">Toggle nav  &raquo;</button>
           </p>
 
           <div class="col-12 col-md-9">
@@ -58,21 +56,13 @@
               <p>
                 Below are examples of the power you can expect from your MKTurbo kit compared to other, more expensive, options on the market:
               </p>
-              <!-- <p class="text-muted">
-                The welded log-style manifold is a tried-and-true approached to turbo manifolds. The MKTurbo kit turbo manifold integrates a port-matched head flange that smoothly transitions to the runners for improved flow to the turbo, as well a thick turbo flange with M10 hardware to ensure the turbo stays secure. The welded mild-steel construction allows for cost savings over a cast or stainless alternative, but is robost and not prone to cracks like other designs.
-              </p>
-              <p class="text-muted">
-                The T3 Turbo utilized in the MKTurbo kit went through exstensive testing before it was selected as the turbo of choice.  The size is a perfect match for the 1.6L and 1.8L engines, and the success ra
-              </p>
-              <p class="text-muted">
-                MKTurbo also sources as many parts as possible from the USA: All flanges are made by a machine shop in Pittsburg, PA, all exhaust piping and v-band assemblies are sourced from Maryland, and all oil lines are sourced and made locally at a hydraulic shop in South Carolina.  This ensures the highest quality parts
-              </p> -->
+
             </div>
             <div class="row">
               <div class="col-6">
                 <div class="card mb-4">
                   <div class="card-block">
-                      <img src="assets/img/dynos/NBdyno_cent.jpg" class="img-fluid" v-on:click="modal = ({ title: '1.8L MKturbo Kit vs. Centrifugal Supercharger Kit', caption: 'Why wait for peak boost at redline, when you can have it at 3,250RPM?!.', img: 'assets/img/dynos/NBdyno_cent.jpg'}), showModal = true">
+                      <img src="assets/img/dynos/NBdyno_cent.jpg" class="img-fluid" pointer="true" v-on:click="modal = ({ title: '1.8L MKturbo Kit vs. Centrifugal Supercharger Kit', caption: 'Why wait for peak boost at redline, when you can have it at 3,250RPM?!.', img: 'assets/img/dynos/NBdyno_cent.jpg'}), showModal = true">
                   </div>
                 </div>
               </div>
@@ -80,7 +70,7 @@
               <div class="col-6">
                 <div class="card mb-4">
                   <div class="card-block">
-                      <img src="assets/img/dynos/NBdyno_mp62.jpg" class="img-fluid" v-on:click="modal = ({ title: '1.8L MKturbo Kit vs. mp62 Supercharger Kit', caption: 'Postive displacement has some low-end advtanges, but lacks the torque the turbo can provide throughout.', img: 'assets/img/dynos/NBdyno_mp62.jpg'}), showModal = true">
+                      <img src="assets/img/dynos/NBdyno_mp62.jpg" class="img-fluid" pointer="true" v-on:click="modal = ({ title: '1.8L MKturbo Kit vs. MP62 Supercharger Kit', caption: 'Postive displacement has some low-end advtanges, but lacks the torque the turbo can provide throughout.', img: 'assets/img/dynos/NBdyno_mp62.jpg'}), showModal = true">
                   </div>
                 </div>
               </div>
@@ -123,30 +113,31 @@
               </div>
             </div>
 
+          </div><!--/row-->
           </div><!--/col-12-->
+      </div><!--/row-offcanvas-->
 
-          <footer-component :year="year"></footer-component>
+        <footer-component :year="year"></footer-component>
 
-        </div>
-      </div>
+      </div><!--/container-->
 
       <modal v-if="showModal" @close="showModal = false" :modal="modal"></modal>
       <transition name="modal">
-        <div v-if="showModal" class="modal-backdrop fade show"></div>
+        <div v-if="showModal" class="modal-backdrop" v-cloak></div>
       </transition>
 
     </div> <!--./app-->
 
     <!-- Bootstrap core JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>-->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>-->
     <!-- Vue.Js -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="application/javascript"></script>
     <script src="assets/scripts/App.vue"></script>
 
     <!-- Custom JQuery -->
-    <script src="assets/scripts/site.js"></script>
+    <!--<script src="assets/scripts/site.js"></script>-->
 
 
   </body>

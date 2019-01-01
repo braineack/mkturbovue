@@ -63,10 +63,38 @@ var app = new Vue({
         {link: 'About MKTurbo', url: 'aboutMKT.html'},
       ],
       year: [],
+      isActive: false,
       showModal: false,
       modal: [
         {title: '', caption: '', img: ''},
       ],
+      price: {
+        NA6DIY: '1,776',
+        NA6IC: '2,350',
+        NA6Full: '4,090',
+        NA8DIY: '1,776',
+        NA8IC: '2,350',
+        NA8Full: '4,090',
+        NBDIY: '1,776',
+        NBIC: '2,350',
+        NBFull: '4,040',
+      },
+      NA6pics: [
+        {url: 'assets/img/1.6LNA/1.6diykit.jpg', thumb: 'assets/img/1.6LNA/1.6diykit_thumb.jpg', heading: 'MKTurbo DIY Turbo Kit', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
+        {url: 'assets/img/1.6LNA/1.6downpipe.jpg', thumb: 'assets/img/1.6LNA/1.6downpipe_thumb.jpg', heading: '', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
+        {url: 'assets/img/1.6LNA/1.6exhaust.jpg', thumb: 'assets/img/1.6LNA/1.6exhaust_thumb.jpg', heading: '', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
+        {url: 'assets/img/1.6LNA/1.6manifold1.jpg', thumb: 'assets/img/1.6LNA/1.6manifold1_thumb.jpg', heading: '', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
+        {url: 'assets/img/1.6LNA/1.6manifoldports.jpg', thumb: 'assets/img/1.6LNA/1.6manifoldports_thumb.jpg', heading: '', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
+        {url: 'assets/img/1.6LNA/1.6fullexhaust.jpg', thumb: 'assets/img/1.6LNA/1.6fullexhaust_thumb.jpg', heading: '', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
+        {url: 'assets/img/1.6LNA/1.6installed.jpg', thumb: 'assets/img/1.6LNA/1.6installed_thumb.jpg', heading: '', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
+        {url: 'assets/img/1.6LNA/1.6manifold.jpg', thumb: 'assets/img/1.6LNA/1.6manifold_thumb.jpg', heading: '', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
+        {url: 'assets/img/1.6LNA/1.6hotsidepipe.jpg', thumb: 'assets/img/1.6LNA/1.6hotsidepipe_thumb.jpg', heading: '', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
+        {url: 'assets/img/1.6LNA/1.6intercoolerpies.jpg', thumb: 'assets/img/1.6LNA/1.6intercoolerpies_thumb.jpg', heading: '', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
+        {url: 'assets/img/1.6LNA/1.6piping.jpg', thumb: 'assets/img/1.6LNA/1.6piping_thumb.jpg', heading: '', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
+        {url: 'assets/img/1.6LNA/1.6dyno.jpg', thumb: 'assets/img/1.6LNA/1.6dyno_thumb.jpg', heading: '', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
+      ],
+      slide: 0,
+      sliding: null
   	};
 	},
 
@@ -79,5 +107,14 @@ var app = new Vue({
       var d = new Date();
       this.year = d.getFullYear();
    },
+   makeActive: function() {
+      this.isActive = !this.isActive;
+   },
+   onSlideStart (slide) {
+      this.sliding = true
+    },
+    onSlideEnd (slide) {
+      this.sliding = false
+    }
   }
 })

@@ -9,10 +9,6 @@ $(document).ready(function () {
 	// 	'dimensions':  			'825,400',
 	// });
 
-  //Activates the offcanvas navigation panel
-  $('[data-toggle="offcanvas"]').click(function () {
-    $('.row-offcanvas').toggleClass('active')
-  });
 
   //Handles the carousel thumbnails
   $('[id^=carousel-selector-]').click(function() {
