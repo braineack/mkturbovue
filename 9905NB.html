@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="assets/img/MKTURBO_fav.png">
+
+    <title>MK Turbo - Make your miata go from Meow to RAWR!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
+
+
+    <!-- Custom Font -->
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,500,800" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/site.css" rel="stylesheet">
+
+  </head>
+
+
+
+  <body>
+    <div id="app">
+      <navbar-component :tagline="tagline"></navbar-component>
+
+      <div class="container">
+
+        <div class="row row-offcanvas row-offcanvas-left" :class="{active: isActive}">
+
+          <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+            <sidebar-offcanvas :nav="navigation"  :url="url"></sidebar-offcanvas>
+          </div><!--/col-6-->
+
+          <p class="float-left hidden-md-up">
+            <button type="button" class="btn btn-pink btn-sm" data-toggle="offcanvas" v-on:click="makeActive">Toggle nav  &raquo;</button>
+          </p>
+
+        <div class="col-12 col-md-9">
+
+          <h6 class="text-uppercase text-gray mt-4">Kit Information</h6>
+          <h3 class="display-4">99-05 NB1/NB2 Turbo kit</h3>
+          <p class="mb-4 text-muted lead" v-cloak>The MK Turbo T3 budget DIY setup is a budget setup to boost 99-05 1.8L NB1/NB2 miatas at a reasonable price. With three "stages" to choose from&mdash;The DIY Turbo KIt, The DIY Turbo w/intercooler kit, The Complete Turbo w/intercooler, injectors, & ECU&mdash;there is an option for everyone. Prices start at ${{ price.NBDIY }} shipped.</p>
+
+
+          <hr class="container mb-5" />
+
+          <div class="row text-center">
+            <div class="px-4 pb-2 mb-5 col-12 col-xl-4 col-lg-6 col-md-12">
+              <div class="px-2">
+                <h6 class="text-uppercase text-gray mb-2">DIY Turbo Kit</h6>
+                <span class="align-top dollar">$</span><span class="display-4 mb-0" v-cloak>{{ price.NBDIY }}</span>
+                <div class="extra mb-4">Shipped</div>
+                <p class="pb-2">The MKTurbo <strong>NB1/NB2</strong> DIY Turbo Kit utilizes a log manifold that is AC and power steering compatible. It includes a 2.5” to 3” downpipe that connects tthrough 3” exhaust pipe all the way to the exhaust tip.</p>
+              </div>
+
+              <ul class="text-left list-unstyled list-unstyled-borders my-4 px-2">
+                <li class="py-4 text-muted"><strong>Welded</strong> Log Style Manifold</li>
+                <li class="py-4 text-muted"><strong>T3 Turbo</strong> with 2.5" v-band outlet</li>
+                <li class="py-4 text-muted"><strong>2.5" to 3" Downpipe</strong> with v-bands at either end</li>
+                <li class="py-4 text-muted"><strong>Full 3" exhaust</strong> with SS Magnaflow muffler, v-bands for all connections</li>
+                <li class="py-4 text-muted"><strong>EGR block off plates</strong> for both ports</li>
+              </ul>
+              <a href="mailto:MKturbos@gmail.com?subject=NB DIY Turbo Kit" class="btn btn-outline-pink btn-block">
+                Purchase
+              </a>
+
+            </div>
+
+        <div class="px-4 pb-2 mb-5 col-12 col-xl-4 col-lg-6 col-md-12">
+          <div class="px-2">
+            <h6 class="text-uppercase text-gray mb-2">Intercooled Kit</h6>
+            <span class="align-top dollar">$</span><span class="display-4 mb-0" v-cloak>{{ price.NBIC }}</span>
+            <div class="extra mb-4">Shipped</div>
+            <p class="pb-2">The MKTurbo <strong>NB1/NB2</strong> Intercooled Kit includes all the parts from the DIY Turbo Kit, plus a complete intercooler kit that still remains AC and power steering compatible!</p>
+          </div>
+
+          <ul class="text-left list-unstyled list-unstyled-borders my-4 px-2">
+            <li class="py-4 text-muted"><strong>DIY Turbo</strong> Kit</li>
+            <li class="py-4 text-muted"><strong>18 x 18"</strong> Bar & Plate Intercooler</li>
+            <li class="py-4 text-muted"><strong>Complete</strong> aluminum piping, silicone couplers, t-clamps, and 3/4" AIT bung</li>
+            <li class="py-4 text-muted"><strong>BOV</strong> with mated flange on piping</li>
+          </ul>
+
+          <a href="mailto:MKturbos@gmail.com?subject=NB Intercooled Kit" class="btn btn-outline-pink btn-block">
+            Purchase
+          </a>
+
+        </div>
+
+        <div class="px-4 pb-2 mb-5 col-12 col-xl-4 col-lg-6 col-md-12">
+          <div class="px-2">
+            <h6 class="text-uppercase text-gray mb-2">Complete Kit</h6>
+            <span class="align-top dollar">$</span><span class="display-4 mb-0" v-cloak>{{ price.NBFull }}</span>
+            <div class="extra mb-4">Shipped</div>
+            <p class="pb-2">The MKTurbo <strong>NB1/NB2</strong> Complete Kit includes all the parts from the Intercooled Kit, plus intake and fitler, Force Flow injectors, MS3PRO ECU, MKTurbo Oil Line Kit, and a Wideband o2 for a complete drive-away kit!</p>
+          </div>
+
+          <ul class="text-left list-unstyled list-unstyled-borders my-4 px-2">
+            <li class="py-4 text-muted"><strong>Intercooled Turbo</strong> Kit</li>
+            <li class="py-4 text-muted"><strong>Cone Filter</strong> with intake piping</li>
+            <li class="py-4 text-muted"><strong>640cc </strong> Force Flow EV-14 Injectors</li>
+            <li class="py-4 text-muted"><strong>MS3PRO ECU</strong> Plug-N-Play Standalone Engine Management System</li>
+            <li class="py-4 text-muted"><strong>WBo2</strong> Controller w/ sensor</li>
+            <li class="py-4 text-muted"><strong>Oil Line Kit</strong> feed line, drain line, and fittings</li>
+          </ul>
+
+          <a href="mailto:MKturbos@gmail.com?subject=NB Complete Kit" class="btn btn-outline-pink btn-block">
+            Purchase
+          </a>
+        </div>
+      </div>
+
+      <hr class="container mb-5" />
+
+      <div class="row">
+        <div class="col-sm-12">
+
+          <b-carousel id="NBPicsCarousel"
+              style="text-shadow: 1px 1px 2px #333;"
+              controls
+              indicators
+              background="#ababab"
+              :interval="9000"
+              img-width="1024"
+              img-height="480"
+              v-model="slide"
+              @sliding-start="onSlideStart"
+              @sliding-end="onSlideEnd"
+          >
+
+            <b-carousel-slide
+                v-for="(pic, index) in NBpics"
+                v-bind:img-src="pic.url"
+                v-bind:caption="pic.heading"
+                v-bind:text="pic.desc"
+                v-bind:key="index"
+            >
+            </b-carousel-slide>
+
+          </b-carousel>
+
+        </div>
+
+      </div>
+
+      <div class="row justify-content-center my-4" id="slider-thumbs">
+        <!-- Bottom switcher of slider -->
+
+        <div v-for="(pic, index) in NBpics" class="col-3 mb-4" :key="index">
+          <a class="thumbnail" :id="'carousel-selector-' + index" @click="slide = index">
+            <img v-bind:src="pic.thumb" alt="..." class="img-fluid img-thumbnail">
+          </a>
+        </div>
+
+      </div>
+
+    </div><!--/span-->
+
+  </div><!--/row-->
+  <footer-component :year="year"></footer-component>
+
+</div><!--/container-->
+
+<modal v-if="showModal" @close="showModal = false" :modal="modal"></modal>
+<transition name="modal">
+  <div v-if="showModal" class="modal-backdrop" v-cloak></div>
+</transition>
+
+</div> <!--./app-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-100885966-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<!-- Vue.Js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="application/javascript"></script>
+<script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+<script src="assets/scripts/App.vue"></script>
+
+
+
+
+</body>
+</html>
+
+    <script>
+        $(document).ready(function () {
+            //Handles the popup modal
+            $('[id^=carousel-image-]').click(function() {
+              var image_selector = $(this).attr("id").split('-').pop();
+                if (image_selector == "1") {
+                  $('#imageModalTitle').text('Turbo manifold, T3 Turbo, Downpipe, and Full exhaust');
+                  $('#imageModalImage').attr('src','assets/img/NB/NBdiykit_full.jpg');
+                  $('#imageModalUrl').attr('href','assets/img/NB/NBdiykit_full.jpg');
+                }
+                if (image_selector == "2") {
+                  $('#imageModalTitle').text('MKturbo NB2 Downpipe');
+                  $('#imageModalImage').attr('src','assets/img/NB/downpipe_full.jpg');
+                  $('#imageModalUrl').attr('href','assets/img/NB/downpipe_full.jpg');
+                }
+                if (image_selector == "3") {
+                  $('#imageModalTitle').text('MKturbo 50 trim T3 Turbo');
+                  $('#imageModalImage').attr('src','assets/img/NB/t3turbo_full.jpg');
+                  $('#imageModalUrl').attr('href','assets/img/NB/t3turbo_full.jpg');
+                }
+                if (image_selector == "4") {
+                  $('#imageModalTitle').text('MKturbo T3 Manifold');
+                  $('#imageModalImage').attr('src','assets/img/NB/manifold_angle_full.jpg');
+                  $('#imageModalUrl').attr('href','assets/img/NB/manifold_angle_full.jpg');
+                }
+                if (image_selector == "5") {
+                  $('#imageModalTitle').text('MKturbo T3 Manifold');
+                  $('#imageModalImage').attr('src','assets/img/NB/manifold_top_full.jpg');
+                  $('#imageModalUrl').attr('href','assets/img/NB/manifold_top_full.jpg');
+                }
+                if (image_selector == "6") {
+                  $('#imageModalTitle').text('MKturbo 5x11x22" Muffler');
+                  $('#imageModalImage').attr('src','assets/img/NB/muffler_full.jpg');
+                  $('#imageModalUrl').attr('href','assets/img/NB/muffler_full.jpg');
+                }
+                if (image_selector == "10") {
+                  $('#imageModalTitle').text('NB2 Intercooler Kit');
+                  $('#imageModalImage').attr('src','assets/img/NB/NB2intercoolerkit_full.jpg');
+                  $('#imageModalUrl').attr('href','assets/img/NB/NB2intercoolerkit_full.jpg');
+                }
+                if (image_selector == "11") {
+                  $('#imageModalTitle').text('18x18" Core Intercooler');
+                  $('#imageModalImage').attr('src','assets/img/NB/intercooler_full.jpg');
+                  $('#imageModalUrl').attr('href','assets/img/NB/intercooler_full.jpg');
+                }
+                if (image_selector == "12") {
+                  $('#imageModalTitle').text('BOV');
+                  $('#imageModalImage').attr('src','assets/img/NB/bov_full.jpg');
+                  $('#imageModalUrl').attr('href','assets/img/NB/bov_full.jpg');
+                }
+            });
+          });
+    </script>
