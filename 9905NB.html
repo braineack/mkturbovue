@@ -135,10 +135,11 @@
 
             <b-carousel-slide
                 v-for="(pic, index) in NBpics"
-                v-bind:img-src="pic.url"
+                v-bind:img-src="pic.dir +'/'+ pic.url"
                 v-bind:caption="pic.heading"
                 v-bind:text="pic.desc"
                 v-bind:key="index"
+                @click.native="modal = ({ title: pic.heading, caption: pic.desc, img: pic.dir + pic.url, fullSize: pic.dir + getSize(pic.url, 'full'),  full: true}), showModal = true"
             >
             </b-carousel-slide>
 
@@ -153,7 +154,7 @@
 
         <div v-for="(pic, index) in NBpics" class="col-3 mb-4" :key="index">
           <a class="thumbnail" :id="'carousel-selector-' + index" @click="slide = index">
-            <img v-bind:src="pic.thumb" alt="..." class="img-fluid img-thumbnail">
+            <img v-bind:src="pic.dir + getSize(pic.url, 'thumb')" :alt="pic.alt" class="img-fluid img-thumbnail">
           </a>
         </div>
 
@@ -196,57 +197,3 @@
 
 </body>
 </html>
-
-    <script>
-        $(document).ready(function () {
-            //Handles the popup modal
-            $('[id^=carousel-image-]').click(function() {
-              var image_selector = $(this).attr("id").split('-').pop();
-                if (image_selector == "1") {
-                  $('#imageModalTitle').text('Turbo manifold, T3 Turbo, Downpipe, and Full exhaust');
-                  $('#imageModalImage').attr('src','assets/img/NB/NBdiykit_full.jpg');
-                  $('#imageModalUrl').attr('href','assets/img/NB/NBdiykit_full.jpg');
-                }
-                if (image_selector == "2") {
-                  $('#imageModalTitle').text('MKturbo NB2 Downpipe');
-                  $('#imageModalImage').attr('src','assets/img/NB/downpipe_full.jpg');
-                  $('#imageModalUrl').attr('href','assets/img/NB/downpipe_full.jpg');
-                }
-                if (image_selector == "3") {
-                  $('#imageModalTitle').text('MKturbo 50 trim T3 Turbo');
-                  $('#imageModalImage').attr('src','assets/img/NB/t3turbo_full.jpg');
-                  $('#imageModalUrl').attr('href','assets/img/NB/t3turbo_full.jpg');
-                }
-                if (image_selector == "4") {
-                  $('#imageModalTitle').text('MKturbo T3 Manifold');
-                  $('#imageModalImage').attr('src','assets/img/NB/manifold_angle_full.jpg');
-                  $('#imageModalUrl').attr('href','assets/img/NB/manifold_angle_full.jpg');
-                }
-                if (image_selector == "5") {
-                  $('#imageModalTitle').text('MKturbo T3 Manifold');
-                  $('#imageModalImage').attr('src','assets/img/NB/manifold_top_full.jpg');
-                  $('#imageModalUrl').attr('href','assets/img/NB/manifold_top_full.jpg');
-                }
-                if (image_selector == "6") {
-                  $('#imageModalTitle').text('MKturbo 5x11x22" Muffler');
-                  $('#imageModalImage').attr('src','assets/img/NB/muffler_full.jpg');
-                  $('#imageModalUrl').attr('href','assets/img/NB/muffler_full.jpg');
-                }
-                if (image_selector == "10") {
-                  $('#imageModalTitle').text('NB2 Intercooler Kit');
-                  $('#imageModalImage').attr('src','assets/img/NB/NB2intercoolerkit_full.jpg');
-                  $('#imageModalUrl').attr('href','assets/img/NB/NB2intercoolerkit_full.jpg');
-                }
-                if (image_selector == "11") {
-                  $('#imageModalTitle').text('18x18" Core Intercooler');
-                  $('#imageModalImage').attr('src','assets/img/NB/intercooler_full.jpg');
-                  $('#imageModalUrl').attr('href','assets/img/NB/intercooler_full.jpg');
-                }
-                if (image_selector == "12") {
-                  $('#imageModalTitle').text('BOV');
-                  $('#imageModalImage').attr('src','assets/img/NB/bov_full.jpg');
-                  $('#imageModalUrl').attr('href','assets/img/NB/bov_full.jpg');
-                }
-            });
-          });
-    </script>

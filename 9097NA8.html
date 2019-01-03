@@ -136,7 +136,7 @@
 
             <b-carousel-slide
                 v-for="(pic, index) in NA8pics"
-                v-bind:img-src="pic.url"
+                v-bind:img-src="pic.dir +'/'+ pic.url"
                 v-bind:caption="pic.heading"
                 v-bind:text="pic.desc"
                 v-bind:key="index"
@@ -154,7 +154,7 @@
 
         <div v-for="(pic, index) in NA8pics" class="col-3 mb-4" :key="index">
           <a class="thumbnail" :id="'carousel-selector-' + index" @click="slide = index">
-            <img v-bind:src="pic.thumb" alt="..." class="img-fluid img-thumbnail">
+            <img v-bind:src="pic.dir +'/'+ getSize(pic.url, 'thumb')" :alt="pic.alt" class="img-fluid img-thumbnail">
           </a>
         </div>
 

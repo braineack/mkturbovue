@@ -38,6 +38,7 @@ Vue.component('modal', {
              '<p>{{ modal.caption }}</p>' +
            '</div>' +
            '<div class="modal-footer">' +
+             '<a :href="modal.fullSize" target="_blank" v-if="modal.full"><button type="button" class="btn btn-secondary">View Full Size</button></a>' +
              '<button type="button" class="btn btn-secondary" @click="$emit(' + "'close'" + ')">Close</button>' +
            '</div>' +
          '</div>' +
@@ -67,7 +68,7 @@ var app = new Vue({
       isActive: false,
       showModal: false,
       modal: [
-        {title: '', caption: '', img: ''},
+        {title: '', caption: '', img: '', fullSize: '', full: false},
       ],
       price: {
         NA6DIY: '1,776',
@@ -81,48 +82,48 @@ var app = new Vue({
         NBFull: '4,040',
       },
       NA6pics: [
-        {url: 'assets/img/1.6LNA/1.6diykit.jpg', thumb: 'assets/img/1.6LNA/1.6diykit_thumb.jpg', heading: 'MKTurbo DIY Turbo Kit', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6downpipe.jpg', thumb: 'assets/img/1.6LNA/1.6downpipe_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6exhaust.jpg', thumb: 'assets/img/1.6LNA/1.6exhaust_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6manifold1.jpg', thumb: 'assets/img/1.6LNA/1.6manifold1_thumb.jpg', heading: '', desc: 'Log-style turbo manifold with a heavy-duty T3 flange that\'s tapped for M10 hardware', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6manifoldports.jpg', thumb: 'assets/img/1.6LNA/1.6manifoldports_thumb.jpg', heading: '', desc: 'Port-matched manifold with a smooth transition to the runners for better flow', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6fullexhaust.jpg', thumb: 'assets/img/1.6LNA/1.6fullexhaust_thumb.jpg', heading: '', desc: 'Compete custom-bent turbo-back exhaust, with v-bands from end-to-end, and a 5x11x22" Magnaflow muffler for ultimate driving pleasure and performance', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6installed.jpg', thumb: 'assets/img/1.6LNA/1.6installed_thumb.jpg', heading: '', desc: 'Turbo fits A/C and p/S without any trimming or massaging any metal', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6manifold.jpg', thumb: 'assets/img/1.6LNA/1.6manifold_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6hotsidepipe.jpg', thumb: 'assets/img/1.6LNA/1.6hotsidepipe_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6intercoolerpies.jpg', thumb: 'assets/img/1.6LNA/1.6intercoolerpies_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6piping.jpg', thumb: 'assets/img/1.6LNA/1.6piping_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6dyno.jpg', thumb: 'assets/img/1.6LNA/1.6dyno_thumb.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16diykit.jpg', heading: 'MKTurbo DIY Turbo Kit', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16downpipe.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16exhaust.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16manifold1.jpg',  heading: '', desc: 'Log-style turbo manifold with a heavy-duty T3 flange that\'s tapped for M10 hardware', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16manifoldports.jpg',  heading: '', desc: 'Port-matched manifold with a smooth transition to the runners for better flow', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16fullexhaust.jpg',  heading: '', desc: 'Compete custom-bent turbo-back exhaust, with v-bands from end-to-end, and a 5x11x22" Magnaflow muffler for ultimate driving pleasure and performance', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16installed.jpg',  heading: '', desc: 'Turbo fits A/C and p/S without any trimming or massaging any metal', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16manifold.jpg',  heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16hotsidepipe.jpg',  heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16intercoolerpies.jpg',  heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16piping.jpg',  heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16dyno.jpg',  heading: '', desc: '', alt: ''},
       ],
       NA8pics: [
-        {url: 'assets/img/1.6LNA/1.6diykit.jpg', thumb: 'assets/img/1.6LNA/1.6diykit_thumb.jpg', heading: 'MKTurbo DIY Turbo Kit', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6downpipe.jpg', thumb: 'assets/img/1.6LNA/1.6downpipe_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6exhaust.jpg', thumb: 'assets/img/1.6LNA/1.6exhaust_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6manifold1.jpg', thumb: 'assets/img/1.6LNA/1.6manifold1_thumb.jpg', heading: '', desc: 'Log-style turbo manifold with a heavy-duty T3 flange that\'s tapped for M10 hardware', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6manifoldports.jpg', thumb: 'assets/img/1.6LNA/1.6manifoldports_thumb.jpg', heading: '', desc: 'Port-matched manifold with a smooth transition to the runners for better flow', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6fullexhaust.jpg', thumb: 'assets/img/1.6LNA/1.6fullexhaust_thumb.jpg', heading: '', desc: 'Compete custom-bent turbo-back exhaust, with v-bands from end-to-end, and a 5x11x22" Magnaflow muffler for ultimate driving pleasure and performance', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6installed.jpg', thumb: 'assets/img/1.6LNA/1.6installed_thumb.jpg', heading: '', desc: 'Turbo fits A/C and p/S without any trimming or massaging any metal', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6manifold.jpg', thumb: 'assets/img/1.6LNA/1.6manifold_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6hotsidepipe.jpg', thumb: 'assets/img/1.6LNA/1.6hotsidepipe_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6intercoolerpies.jpg', thumb: 'assets/img/1.6LNA/1.6intercoolerpies_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/1.6LNA/1.6piping.jpg', thumb: 'assets/img/1.6LNA/1.6piping_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/NB/NBdyno.jpg', thumb: 'assets/img/NB/NBdyno_thumb.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16diykit.jpg', heading: 'MKTurbo DIY Turbo Kit', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16downpipe.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16exhaust.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16manifold1.jpg', heading: '', desc: 'Log-style turbo manifold with a heavy-duty T3 flange that\'s tapped for M10 hardware', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16manifoldports.jpg', heading: '', desc: 'Port-matched manifold with a smooth transition to the runners for better flow', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16fullexhaust.jpg', heading: '', desc: 'Compete custom-bent turbo-back exhaust, with v-bands from end-to-end, and a 5x11x22" Magnaflow muffler for ultimate driving pleasure and performance', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16installed.jpg', heading: '', desc: 'Turbo fits A/C and p/S without any trimming or massaging any metal', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16manifold.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16hotsidepipe.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16intercoolerpies.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/16LNA/', url: '16piping.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/NB/', url: 'assets/img/NB/NBdyno.jpg', heading: '', desc: '', alt: ''},
       ],
       NBpics: [
-        {url: 'assets/img/NB/NBdiykit.jpg', thumb: 'assets/img/NB/NBdiykit_thumb.jpg', heading: 'MKTurbo DIY Turbo Kit', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
-        {url: 'assets/img//NB/downpipe.jpg', thumb: 'assets/img//NB/downpipe_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/NB/t3turbo.jpg', thumb: 'assets/img/NB/t3turbo_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/NB/manifold_angle.jpg', thumb: 'assets/img/NB/manifold_angle_thumb.jpg', heading: '', desc: 'Log-style turbo manifold with a heavy-duty T3 flange that\'s tapped for M10 hardware', alt: ''},
-        {url: 'assets/img/NB/manifold_top.jpg', thumb: 'assets/img/NB/manifold_top_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/NB/muffler.jpg', thumb: 'assets/img/NB/muffler_thumb.jpg', heading: '', desc: 'Compete custom-bent turbo-back exhaust, with v-bands from end-to-end, and a 5x11x22" Magnaflow muffler for ultimate driving pleasure and performance', alt: ''},
-        {url: 'assets/img/NB/NBinstalled.jpg', thumb: 'assets/img/NB/NBinstalled_thumb.jpg', heading: '', desc: 'Turbo fits A/C and p/S without any trimming or massaging any metal', alt: ''},
-        {url: 'assets/img/NB/NBintercoolerhotside.jpg', thumb: 'assets/img/NB/NBintercoolerhotside_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/NB/NBintercoolerbracket.jpg', thumb: 'assets/img/NB/NBintercoolerbracket_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/NB/NB2intercoolerkit.jpg', thumb: 'assets/img/NB/NB2intercoolerkit_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/NB/intercooler.jpg', thumb: 'assets/img/NB/intercooler_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/NB/bov.jpg', thumb: 'assets/img/NB/bov_thumb.jpg', heading: '', desc: '', alt: ''},
-        {url: 'assets/img/NB/NBexhaustpacked.jpg', thumb: 'assets/img/NB/NBexhaustpacked_thumb.jpg', heading: '', desc: 'Professional-level packing with double-walled custom-built cardboard boxes to ensure your parts arrive without damage', alt: ''},
-        {url: 'assets/img/NB/NBdyno.jpg', thumb: 'assets/img/NB/NBdyno_thumb.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/NB/', url: 'NBdiykit.jpg', heading: 'MKTurbo DIY Turbo Kit', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
+        {dir: 'assets/img/NB/', url: 'downpipe.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/NB/', url: 't3turbo.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/NB/', url: 'manifold_angle.jpg', heading: '', desc: 'Log-style turbo manifold with a heavy-duty T3 flange that\'s tapped for M10 hardware', alt: ''},
+        {dir: 'assets/img/NB/', url: 'manifold_top.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/NB/', url: 'muffler.jpg', heading: '', desc: 'Compete custom-bent turbo-back exhaust, with v-bands from end-to-end, and a 5x11x22" Magnaflow muffler for ultimate driving pleasure and performance', alt: ''},
+        {dir: 'assets/img/NB/', url: 'NBinstalled.jpg', heading: '', desc: 'Turbo fits A/C and p/S without any trimming or massaging any metal', alt: ''},
+        {dir: 'assets/img/NB/', url: 'NBintercoolerhotside.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/NB/', url: 'NBintercoolerbracket.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/NB/', url: 'NB2intercoolerkit.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/NB/', url: 'intercooler.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/NB/', url: 'bov.jpg', heading: '', desc: '', alt: ''},
+        {dir: 'assets/img/NB/', url: 'NBexhaustpacked.jpg', heading: '', desc: 'Professional-level packing with double-walled custom-built cardboard boxes to ensure your parts arrive without damage', alt: ''},
+        {dir: 'assets/img/NB/', url: 'NBdyno.jpg', heading: '', desc: '', alt: ''},
       ],
       slide: 0,
       sliding: null
@@ -146,6 +147,11 @@ var app = new Vue({
     },
     onSlideEnd (slide) {
       this.sliding = false
+    },
+    getSize (image, size) {
+      var filename = image.split('.')[0];
+      var extension = image.split('.')[1];
+      return filename + '_' + size + '.' + extension
     }
   }
 })
