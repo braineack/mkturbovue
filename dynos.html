@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="assets/img/MKTURBO_fav.png">
+
+    <title>MK Turbo - Make your miata go from Meow to RAWR!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
+
+
+    <!-- Custom Font -->
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,500,800" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/site.css" rel="stylesheet">
+
+  </head>
+
+
+
+  <body>
+    <div id="app">
+      <navbar-component :tagline="tagline"></navbar-component>
+
+      <div class="container">
+
+        <div class="row row-offcanvas row-offcanvas-left" :class="{active: isActive}">
+
+          <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+            <sidebar-offcanvas :nav="navigation" :url="url"></sidebar-offcanvas>
+          </div><!--/col-6-->
+
+          <p class="float-left hidden-md-up">
+            <button type="button" class="btn btn-pink btn-sm" data-toggle="offcanvas" v-on:click="makeActive">Toggle nav  &raquo;</button>
+          </p>
+
+          <div class="col-12 col-md-9">
+
+            <h6 class="text-uppercase text-gray mt-4">Dynos</h6>
+            <h3 class="display-4">Assortment of dyno charts from various MKTurbo customers</h3>
+            <hr class="mb-5" />
+
+
+            <div class="row">
+
+              <div class="col-lg-6 col-md-12">
+                <div class="card mb-4">
+                  <div class="card-block">
+                    <h4 class="card-title">'94 w/VVT head @ 10psi</h4>
+                    <p class="card-text">215 Horsepower / 195 Torque</p>
+                    <button type="button" class="btn btn-outline-pink" pointer="true" v-on:click="modal = ({ title: '\'94 block w/VVT head @ 8psi', caption: '', img: 'assets/img/dynos/94_vvt_dyno.jpg'}), showModal = true" >See Dyno Chart</button>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-lg-6 col-md-12">
+                <div class="card mb-4">
+                  <div class="card-block">
+                    <h4 class="card-title">'99 w/more than 240k miles</h4>
+                    <p class="card-text">230 Horsepower / 217 Torque</p>
+                    <button type="button" class="btn btn-outline-pink" v-on:click="modal = ({ title: '\'99 w/more than 240k miles', caption: '', img: 'assets/img/dynos/99miatasonofthehill.png'}), showModal = true" >See Dyno Chart</button>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-12">
+                <div class="card mb-4">
+                  <div class="card-block">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe width="560" height="315" src="https://www.youtube.com/embed/TLdi4JDZVqI" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+
+        </div><!--/col-12-->
+
+      </div><!--/row-->
+      <footer-component :year="year"></footer-component>
+
+    </div><!--/container-->
+
+    <modal v-if="showModal" @close="showModal = false" :modal="modal"></modal>
+    <transition name="modal">
+      <div v-if="showModal" class="modal-backdrop" v-cloak></div>
+    </transition>
+
+    </div> <!--./app-->
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-100885966-1', 'auto');
+    ga('send', 'pageview');
+
+    </script>
+
+    <!-- Vue.Js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js" type="application/javascript"></script>
+    <script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+    <script src="assets/scripts/App.vue"></script>
+
+    <!-- v-on:click.native="modal = ({ title: pic.heading, caption: pic.desc, img: pic.url}), showModal = true" -->
+
+
+    </body>
+    </html>

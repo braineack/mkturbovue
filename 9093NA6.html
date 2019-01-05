@@ -45,7 +45,7 @@
 
             <h6 class="text-uppercase text-gray mt-4">Kit Information</h6>
             <h3 class="display-4">90-93 NA6 Turbo kit</h3>
-            <p class="mb-4 text-muted lead" v-cloak>The MK Turbo T3 budget DIY setup is a budget setup to boost 1.6L and 1.8L NA and NB miatas at a reasonable price. With three "stages" to choose from&mdash;The DIY Turbo KIt, The DIY Turbo w/intercooler kit, The Complete Turbo w/intercooler, injectors, & ECU&mdash;there is an option for everyone. Prices start at ${{ price.NA6DIY }} shipped.</p>
+            <p class="mb-4 text-muted lead" v-cloak>The MK Turbo T3 budget DIY setup is a budget setup to boost 1.6L and 1.8L NA and NB miatas at a reasonable price. With three "stages" to choose from&mdash;The DIY Turbo KIt, The DIY Turbo w/intercooler kit, The Complete Turbo w/intercooler, injectors, & ECU&mdash;there is an option for everyone. Prices start at ${{ price.NA6DIY.reg }} shipped.</p>
 
             <hr class="container mb-5" />
 
@@ -53,7 +53,10 @@
               <div class="px-4 pb-2 mb-5 col-12 col-xl-4 col-lg-6 col-md-12">
                 <div class="px-2">
                   <h6 class="text-uppercase text-gray mb-2">DIY Turbo Kit</h6>
-                  <span class="align-top dollar">$</span><span class="display-4 mb-0" v-cloak>{{ price.NA6DIY }}</span>
+                  <div v-if="price.NA6DIY.sale">
+                    <span class="align-top dollar text-pink">$</span><span class="display-4 mb-0 text-pink" v-cloak>{{ price.NA6DIY.dis }}</span>
+                  </div>
+                  <span class="align-top dollar">$</span><span class="display-4 mb-0" :class="{ sale : price.NA6DIY.sale }" v-cloak>{{ price.NA6DIY.reg }}</span>
                   <div class="extra mb-4">Shipped</div>
                   <p class="pb-2">The MKTurbo <strong>NA6</strong> DIY Turbo Kit is made for 90-93 Miatas withg the factory 1.6L still installed. It utilizes a log manifold that is AC and power steering compatible. The downpipe, mid pipe, and axle back are the same as the 1.8 NA setups to make future upgrades to a 1.8L engine easy.</p>
                 </div>
@@ -73,7 +76,10 @@
           <div class="px-4 pb-2 mb-5 col-12 col-xl-4 col-lg-6 col-md-12">
             <div class="px-2">
               <h6 class="text-uppercase text-gray mb-2">Intercooled Kit</h6>
-              <span class="align-top dollar">$</span><span class="display-4 mb-0" v-cloak>{{ price.NA6IC }}</span>
+              <div v-if="price.NA6IC.sale">
+                <span class="align-top dollar text-pink">$</span><span class="display-4 mb-0 text-pink" v-cloak>{{ price.NA6IC.dis }}</span>
+              </div>
+              <span class="align-top dollar">$</span><span class="display-4 mb-0" :class="{ sale : price.NA6IC.sale }" v-cloak>{{ price.NA6IC.reg }}</span>
               <div class="extra mb-4">Shipped</div>
               <p class="pb-2">The MKTurbo <strong>NA6</strong> Intercooled Kit includes all the parts from the DIY Turbo Kit, plus a complete intercooler kit that still remains AC and power steering compatible!</p>
             </div>
@@ -94,7 +100,10 @@
           <div class="px-4 pb-2 mb-5 col-12 col-xl-4 col-lg-6 col-md-12">
             <div class="px-2">
               <h6 class="text-uppercase text-gray mb-2">Complete Kit</h6>
-              <span class="align-top dollar">$</span><span class="display-4 mb-0" v-cloak>{{ price.NA6Full }}</span>
+              <div v-if="price.NA6Full.sale">
+                <span class="align-top dollar text-pink">$</span><span class="display-4 mb-0 text-pink" v-cloak>{{ price.NA6Full.dis }}</span>
+              </div>
+              <span class="align-top dollar">$</span><span class="display-4 mb-0" :class="{ sale : price.NA6Full.sale }" v-cloak>{{ price.NA6Full.reg }}</span>
               <div class="extra mb-4">Shipped</div>
               <p class="pb-2">The MKTurbo <strong>NA6</strong> Complete Kit includes all the parts from the Intercooled Kit, plus intake and fitler, Force Flow injectors, MS3PRO ECU, MKTurbo Oil Line Kit, and a Wideband o2 for a complete drive-away kit!</p>
             </div>
@@ -141,6 +150,8 @@
                   v-bind:caption="pic.heading"
                   v-bind:text="pic.desc"
                   v-bind:key="index"
+                  @click.native="modal = ({ title: pic.heading, caption: pic.desc, img: pic.dir + pic.url, fullSize: pic.dir + getSize(pic.url, 'full'),  full: true}), showModal = true"
+
               >
               </b-carousel-slide>
 
@@ -187,7 +198,7 @@
 </script>
 
 <!-- Vue.Js -->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="application/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js" type="application/javascript"></script>
 <script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
 <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
 <script src="assets/scripts/App.vue"></script>
