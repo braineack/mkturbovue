@@ -44,7 +44,7 @@ props: ['nav', 'url'],
 
 Vue.component('footer-component', {
 props: ['year'],
-  template: '<footer><hr /><p class="mt-5">&copy; Copyright 2017-{{year}} MK Turbo. All Rights Reserved.</p></footer>',
+  template: '<div><hr /><p class="mt-5">&copy; Copyright 2017-{{year}} MK Turbo. All Rights Reserved.</p></div>',
 })
 
 Vue.component('sale-banner', {
