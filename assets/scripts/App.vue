@@ -10,7 +10,7 @@ Vue.component('base-layout', {
         '<b-col class="sidebar-offcanvas" cols="6" md="3">' +
           '<slot name="navigation"></slot>' +
         '</b-col>' +
-        '<p class="float-left d-none d-sm-block d-md-none">' +
+        '<p class="float-left d-sm-block d-md-none pl-3">' +
           '<button type="button" class="btn btn-pink btn-sm" data-toggle="offcanvas" @click="makeActive()">Toggle nav  &raquo;</button>' +
         '</p>' +
         '<b-col cols="12" md="9">' +
