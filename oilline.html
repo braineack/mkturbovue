@@ -31,7 +31,6 @@
           <h3 class="display-4">Oil Line Kit</h3>
           <p class="mb-4 text-muted lead">The oil line kit will come with a -4an feed line and restrictors, -8an drain line, a tee block and fittings to bolt in at the oil pressure sender port on the block, drain fitting for the oil pan, and the input and outputs for the turbo. Basically everything you need to oil the turbo is included except for the drill bit and tap needed to tap your oil pan. The AN lines and fitting are all Aeroquip and covered in fire sleeve &mdash; locally made in the USA.</p>
 
-
           <hr class="container mb-5" />
 
           <div class="row text-center justify-content-lg-center">
@@ -47,11 +46,7 @@
               </div>
 
               <ul class="text-left list-unstyled list-unstyled-borders my-4 px-2">
-                <li class="py-4 text-muted"><strong>TSE</strong> oil feed adapter and -4an fitting</li>
-                <li class="py-4 text-muted"><strong>SS Oil feed line</strong> -4an</li>
-                <li class="py-4 text-muted"><strong>Fitting and flange</strong> for turbo oil inlet and outlet</li>
-                <li class="py-4 text-muted"><strong>SS Oil drain line</strong> -8an</li>
-                <li class="py-4 text-muted"><strong>SS Drain-pan fitting</strong> 3/8npt to -8an</li>
+                <li class="py-4 text-muted" v-for="(item, index) in parts.OilKit" :key="index" v-html="item"></li>
               </ul>
 
               <a href="mailto:MKturbos@gmail.com?subject=Oil Line Kit" class="btn btn-outline-pink btn-block">
@@ -64,19 +59,21 @@
 
           <hr class="container mb-5" />
 
-          <div class="col-12">
-            <div class="card mb-4">
-              <div class="card-block">
-                  <img src="assets/img/oillines/oillinekit.jpg" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target="#imageModal" id="image-1">
-              </div>
-            </div>
+          <b-col cols="12">
 
-            <div class="card mb-4">
-              <div class="card-block">
-                  <img src="assets/img/oillines/oilline_fittings.jpg" class="img-fluid" alt="Responsive image" data-toggle="modal" data-target="#imageModal" id="image-2">
-              </div>
-            </div>
-          </div>
+            <b-card img-src="assets/img/oillines/oillinekit.jpg"
+                    img-alt="Parts of Oil Kit"
+                    img-fluid
+                    class="mb-4">
+            </b-card>
+
+            <b-card img-src="assets/img/oillines/oilline_fittings.jpg"
+                    img-alt="Parts of fittings included in Oil Kit"
+                    img-fluid
+                    class="mb-4">
+            </b-card>
+
+          </b-col>
 
           <navbar-component :tagline="tagline" slot="header"></navbar-component>
 

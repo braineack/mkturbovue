@@ -47,12 +47,9 @@
               </div>
 
               <ul class="text-left list-unstyled list-unstyled-borders my-4 px-2">
-                <li class="py-4 text-muted"><strong>Welded</strong> Log Style Manifold</li>
-                <li class="py-4 text-muted"><strong>T3 Turbo</strong> with 2.5" v-band outlet</li>
-                <li class="py-4 text-muted"><strong>2.5" to 3" Downpipe</strong> with v-bands at either end</li>
-                <li class="py-4 text-muted"><strong>Full 3" exhaust</strong> with SS Magnaflow muffler, v-bands for all connections</li>
-                <li class="py-4 text-muted"><strong>EGR block off plates</strong> for both ports</li>
+                <li class="py-4 text-muted" v-for="(item, index) in parts.NBDIY" :key="index" v-html="item"></li>
               </ul>
+
               <a href="mailto:MKturbos@gmail.com?subject=NB DIY Turbo Kit" class="btn btn-outline-pink btn-block">
                 Purchase
               </a>
@@ -67,14 +64,11 @@
             </div>
             <span class="align-top dollar">$</span><span class="display-4 mb-0" :class="{ sale : price.NBIC.sale }" v-cloak>{{ price.NBIC.reg }}</span>
             <div class="extra mb-4">Shipped</div>
-            <p class="pb-2">The MKTurbo <strong>NB1/NB2</strong> Intercooled Kit includes all the parts from the DIY Turbo Kit, plus a complete intercooler kit that still remains AC and power steering compatible!</p>
+            <p class="pb-2">The MKTurbo <strong>NB1/NB2</strong> Intercooled Kit includes all the parts from the DIY Turbo Kit, plus a complete intercooler kit that still retains AC and power steering compatibility!</p>
           </div>
 
           <ul class="text-left list-unstyled list-unstyled-borders my-4 px-2">
-            <li class="py-4 text-muted"><strong>DIY Turbo</strong> Kit</li>
-            <li class="py-4 text-muted"><strong>18 x 18"</strong> Bar & Plate Intercooler</li>
-            <li class="py-4 text-muted"><strong>Complete</strong> aluminum piping, silicone couplers, t-clamps, and 3/4" AIT bung</li>
-            <li class="py-4 text-muted"><strong>BOV</strong> with mated flange on piping</li>
+            <li class="py-4 text-muted" v-for="(item, index) in parts.NBIC" :key="index" v-html="item"></li>
           </ul>
 
           <a href="mailto:MKturbos@gmail.com?subject=NB Intercooled Kit" class="btn btn-outline-pink btn-block">
@@ -95,12 +89,7 @@
           </div>
 
           <ul class="text-left list-unstyled list-unstyled-borders my-4 px-2">
-            <li class="py-4 text-muted"><strong>Intercooled Turbo</strong> Kit</li>
-            <li class="py-4 text-muted"><strong>Cone Filter</strong> with intake piping</li>
-            <li class="py-4 text-muted"><strong>640cc </strong> Force Flow EV-14 Injectors</li>
-            <li class="py-4 text-muted"><strong>MS3PRO ECU</strong> Plug-N-Play Standalone Engine Management System</li>
-            <li class="py-4 text-muted"><strong>WBo2</strong> Controller w/ sensor</li>
-            <li class="py-4 text-muted"><strong>Oil Line Kit</strong> feed line, drain line, and fittings</li>
+            <li class="py-4 text-muted" v-for="(item, index) in parts.NBFull" :key="index" v-html="item"></li>
           </ul>
 
           <a href="mailto:MKturbos@gmail.com?subject=NB Complete Kit" class="btn btn-outline-pink btn-block">
@@ -140,7 +129,6 @@
           </b-carousel>
 
         </div>
-
       </div>
 
       <div class="row justify-content-center my-4" id="slider-thumbs">

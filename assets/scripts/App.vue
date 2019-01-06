@@ -126,6 +126,18 @@ var app = new Vue({
         OilKit: {reg: '125', dis: '110', sale: false},
       },
       saleBannerActive: false,
+      parts: {
+        NA6DIY: [ '<strong>Welded</strong> Log Style Manifold', '<strong>T3 Turbo</strong> with 2.5" v-band outlet', '<strong>2.5" to 3" Downpipe</strong> with v-bands at either end', '<strong>Full 3" exhaust</strong> with SS Magnaflow muffler\, v-bands for all connections' ],
+        NA6IC: [ '<strong>DIY Turbo</strong> Kit', '<strong>18 x 18"</strong> Bar & Plate Intercooler', '<strong>Complete</strong> aluminum piping, silicone couplers, t-clamps, and 3/4" AIT bung', '<strong>BOV</strong> with mated flange on piping' ],
+        NA6Full: [ '<strong>Intercooled Turbo</strong> Kit', '<strong>PNP vTPS</strong> Plug-N-Play variable TPS', '<strong>Cone Filter</strong> with intake piping', '<strong>640cc </strong> Force Flow EV-14 Injectors', '<strong>MS3PRO ECU</strong> Plug-N-Play Standalone Engine Management System', '<strong>WBo2</strong> Controller w/ sensor', '<strong>Oil Line Kit</strong> feed line\, drain line\, and fittings' ],
+        NA8DIY: [ '<strong>Welded</strong> Log Style Manifold', '<strong>T3 Turbo</strong> with 2.5" v-band outlet', '<strong>2.5" to 3" Downpipe</strong> with v-bands at either end', '<strong>Full 3" exhaust</strong> with SS Magnaflow muffler\, v-bands for all connections', '<strong>EGR block off plates</strong> for both ports' ],
+        NA8IC: [ '<strong>DIY Turbo</strong> Kit', '<strong>18 x 18"</strong> Bar & Plate Intercooler', '<strong>Complete</strong> aluminum piping, silicone couplers, t-clamps, and 3/4" AIT bung', '<strong>BOV</strong> with mated flange on piping' ],
+        NA8Full: [ '<strong>Intercooled Turbo</strong> Kit', '<strong>Cone Filter</strong> with intake piping', '<strong>640cc </strong> Force Flow EV-14 Injectors', '<strong>MS3PRO ECU</strong> Plug-N-Play Standalone Engine Management System', '<strong>WBo2</strong> Controller w/ sensor', '<strong>Oil Line Kit</strong> feed line\, drain line\, and fittings' ],
+        NBDIY: [ '<strong>Welded</strong> Log Style Manifold', '<strong>T3 Turbo</strong> with 2.5" v-band outlet', '<strong>2.5" to 3" Downpipe</strong> with v-bands at either end', '<strong>Full 3" exhaust</strong> with SS Magnaflow muffler\, v-bands for all connections', '<strong>EGR block off plates</strong> for both ports' ],
+        NBIC: [ '<strong>DIY Turbo</strong> Kit', '<strong>18 x 18"</strong> Bar & Plate Intercooler', '<strong>Complete</strong> aluminum piping, silicone couplers, t-clamps, and 3/4" AIT bung', '<strong>BOV</strong> with mated flange on piping' ],
+        NBFull: [ '<strong>Intercooled Turbo</strong> Kit', '<strong>Cone Filter</strong> with intake piping', '<strong>640cc </strong> Force Flow EV-14 Injectors', '<strong>MS3PRO ECU</strong> Plug-N-Play Standalone Engine Management System', '<strong>WBo2</strong> Controller w/ sensor', '<strong>Oil Line Kit</strong> feed line\, drain line\, and fittings' ],
+        OilKit: [ '<strong>TSE</strong> oil feed adapter and -4an fitting', '<strong>SS Oil feed line</strong> -4an', '<strong>Fitting and flange</strong> for turbo oil inlet and outlet', '<strong>SS Oil drain line</strong> -8an', '<strong>SS Drain-pan fitting</strong> 3/8npt to -8an', ],
+      },
       NA6pics: [
         {dir: 'assets/img/product/', url: 'NBdiykit.jpg', heading: 'MKTurbo DIY Turbo Kit', desc: 'Turbo manifold, T3 Turbo, Downpipe, and Full exhaust', alt: ''},
         {dir: 'assets/img/product/', url: 'downpipe.jpg', heading: 'MKTurbo Downpipe', desc: '2.5" to 3" downpipe with flex and WB bung', alt: ''},
