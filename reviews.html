@@ -11,9 +11,8 @@
     <title>MK Turbo - Make your miata go from Meow to RAWR!</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
-
 
     <!-- Custom Font -->
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,500,800" rel="stylesheet">
@@ -24,61 +23,47 @@
   </head>
 
 
-
   <body>
-    <div id="app">
-      <navbar-component :tagline="tagline"></navbar-component>
-
-      <div class="container">
-
-        <div class="row row-offcanvas row-offcanvas-left" :class="{active: isActive}">
-
-          <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
-            <sidebar-offcanvas :nav="navigation" :url="url"></sidebar-offcanvas>
-          </div><!--/col-6-->
-
-          <p class="float-left hidden-md-up">
-            <button type="button" class="btn btn-pink btn-sm" data-toggle="offcanvas" v-on:click="makeActive">Toggle nav  &raquo;</button>
-          </p>
-
-        <div class="col-12 col-md-9">
+    <div id="app" v-cloak>
+      <base-layout v-bind="{isActive, makeActive}">
 
           <h6 class="text-uppercase text-gray mt-4">reviews</h6>
           <h3 class="display-4">What customers have to say about the MKTurbo kit</h3>
 
           <hr class="container mb-5" />
 
-          <blockquote class="blockquote mb-5">
+          <blockquote class="blockquote mb-5 pl-3">
             <p><strong>I love my MK Turbo.</strong> It turned my mild mannered Miata, into a Savage beast that hungers for Vettes and Mustangs.</p>
             <p class="mb-0">I love the quality fit and ease of installation, not to mention the ability easily swap different turbos for different applications. I installed my kit 2 years ago and have put 23,000 miles including 189 1/4 mile passes as of writing this. My fastest 1/4 mile was 12.7 seconds and I once trapped 110 mph with some high octane gas. I will definitely buy another MK Turbo if I ever get another Miata.</p>
             <footer class="blockquote-footer">Carlos</footer>
           </blockquote>
 
-          <blockquote class="blockquote mb-5">
+          <blockquote class="blockquote mb-5 pl-3">
             <p><strong>Highly recommended!</strong></p>
               <p>I bought my MKTurbo kit in September 2015 and have been running it since. The car has seen track time and a lot of street duty, and it's performed exceptionally well. I run 14psi, which provides plenty of power without breaking stuff. The v-band design makes it easy to work on, and with a cat the noise level is surprisingly low for a 3-inch exhaust.</p>
               <p class="mb-0">I chose it because of the price, but I now recommend it because of the reliability and build quality.</p>
             <footer class="blockquote-footer">Nigel</footer>
           </blockquote>
 
-          <blockquote class="blockquote mb-5">
+          <blockquote class="blockquote mb-5 pl-3">
             <p>The MK turbo kit is the most affordable way to reliably turbo your Miata.</p>
             <p>The kit is built here in the US by someone who is both super knowledgeable about Miatas, and is also very active in the Miata community.  Lars is very helpful and responsive.  I've never waited more than 24 hours for a response with any questions I had.</p>
             <p class="mb-0">The MK turbo kit gives you a rock solid hot-side to build your own turbo system around.  Installation is straight forward, and only takes a few hours to install. This kit makes great power on the Miata.  You should buy one!</p>
             <footer class="blockquote-footer">Jerome </footer>
           </blockquote>
 
-        </div><!--/col-12-->
+          <navbar-component :tagline="tagline" slot="header"></navbar-component>
 
-      </div><!--/row-->
-      <footer-component :year="year"></footer-component>
+          <sidebar-offcanvas :nav="navigation" :url="url" slot="navigation"></sidebar-offcanvas>
 
-    </div><!--/container-->
+          <footer-component :year="year" slot="footer"></footer-component>
 
-    <modal v-if="showModal" @close="showModal = false" :modal="modal"></modal>
-    <transition name="modal">
-      <div v-if="showModal" class="modal-backdrop" v-cloak></div>
-    </transition>
+          <modal v-if="showModal" @close="showModal = false" :modal="modal"></modal>
+          <transition name="modal">
+            <div v-if="showModal" class="modal-backdrop" v-cloak></div>
+          </transition>
+
+      </base-layout>
 
     </div> <!--./app-->
 

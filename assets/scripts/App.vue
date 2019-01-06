@@ -1,19 +1,45 @@
+Vue.component('base-layout', {
+  props: ['isActive', 'makeActive' ],
+  template:
+  '<b-container>' +
+    '<header>' +
+      '<slot name="header"></slot>' +
+    '</header>' +
+    '<main>' +
+      '<b-row class="row-offcanvas row-offcanvas-left" :class="{active: isActive}">' +
+        '<b-col class="sidebar-offcanvas" cols="6" md="3">' +
+          '<slot name="navigation"></slot>' +
+        '</b-col>' +
+        '<p class="float-left d-none d-sm-block d-md-none">' +
+          '<button type="button" class="btn btn-pink btn-sm" data-toggle="offcanvas" @click="makeActive()">Toggle nav  &raquo;</button>' +
+        '</p>' +
+        '<b-col cols="12" md="9">' +
+         '<slot></slot>' +
+        '</b-col>'+
+      '</b-row>'+
+    '</main>' +
+    '<footer>' +
+      '<slot name="footer"></slot>' +
+    '</footer>' +
+  '</b-container>'
+})
+
 Vue.component('navbar-component', {
   props: ['tagline'],
-  template: '<nav class="navbar navbar-toggleable-md fixed-top navbar-inverse bg-inverse">' +
-                '<a class="navbar-brand" href="index.html">' +
+  template: '<b-navbar type="dark" variant="dark" fixed="top">' +
+                '<b-navbar-brand href="index.html">' +
                   '<img src="assets/img/MKTURBO_PinkLogo150x30.png" class="d-inline-block align-top" alt="MKTurbo Logo"/>' +
-                  '<span class="hidden-xs-down"> {{tagline}}</span>' +
-                '</a>' +
-             '</nav>',
+                  '<span class="pl-3 d-none d-sm-inline">{{tagline}}</span>' +
+                  '</b-navbar-brand>' +
+             '</b-navbar>',
 })
 
 
 Vue.component('sidebar-offcanvas', {
 props: ['nav', 'url'],
-  template:'<div class="list-group">' +
-      '<a v-for="item in nav" class="list-group-item border-0 list-group-item-action rounded my-1" :class="{ active : item.url == url}"  :href="item.url">{{item.link}}</a>' +
-    '</div>',
+  template:'<b-list-group>' +
+              '<b-list-group-item v-for="item in nav" class="border-0 rounded my-1" :key="item.key" :active="item.url == url ? true : false" :href="item.url">{{item.link}}</b-list-group-item>' +
+            '</b-list-group>',
 })
 
 Vue.component('footer-component', {

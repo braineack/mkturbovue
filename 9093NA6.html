@@ -11,9 +11,8 @@
     <title>MK Turbo - Make your miata go from Meow to RAWR!</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
-
 
     <!-- Custom Font -->
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,500,800" rel="stylesheet">
@@ -24,24 +23,9 @@
   </head>
 
 
-
   <body>
-    <div id="app">
-      <navbar-component :tagline="tagline"></navbar-component>
-
-      <div class="container">
-
-        <div class="row row-offcanvas row-offcanvas-left" :class="{active: isActive}">
-
-          <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
-            <sidebar-offcanvas :nav="navigation" :url="url"></sidebar-offcanvas>
-          </div><!--/col-6-->
-
-          <p class="float-left hidden-md-up">
-            <button type="button" class="btn btn-pink btn-sm" data-toggle="offcanvas" v-on:click="makeActive">Toggle nav  &raquo;</button>
-          </p>
-
-          <div class="col-12 col-md-9">
+    <div id="app" v-cloak>
+      <base-layout v-bind="{isActive, makeActive}">
 
             <h6 class="text-uppercase text-gray mt-4">Kit Information</h6>
             <h3 class="display-4">90-93 NA6 Turbo kit</h3>
@@ -172,17 +156,18 @@
 
         </div>
 
-      </div><!--/span-->
+        <navbar-component :tagline="tagline" slot="header"></navbar-component>
 
-    </div><!--/row-->
-    <footer-component :year="year"></footer-component>
+        <sidebar-offcanvas :nav="navigation" :url="url" slot="navigation"></sidebar-offcanvas>
 
-  </div><!--/container-->
+        <footer-component :year="year" slot="footer"></footer-component>
 
-  <modal v-if="showModal" @close="showModal = false" :modal="modal"></modal>
-  <transition name="modal">
-    <div v-if="showModal" class="modal-backdrop" v-cloak></div>
-  </transition>
+        <modal v-if="showModal" @close="showModal = false" :modal="modal"></modal>
+        <transition name="modal">
+          <div v-if="showModal" class="modal-backdrop" v-cloak></div>
+        </transition>
+
+    </base-layout>
 
 </div> <!--./app-->
 

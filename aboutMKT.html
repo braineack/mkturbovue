@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,7 +11,7 @@
     <title>MK Turbo - Make your miata go from Meow to RAWR!</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
 
     <!-- Custom Font -->
@@ -22,54 +23,42 @@
   </head>
 
 
+  <body>
+    <div id="app" v-cloak>
+      <base-layout v-bind="{isActive, makeActive}">
 
-<body>
-  <div id="app">
-    <navbar-component :tagline="tagline"></navbar-component>
-
-    <div class="container">
-
-      <div class="row row-offcanvas row-offcanvas-left" :class="{active: isActive}">
-
-        <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
-          <sidebar-offcanvas :nav="navigation" :url="url"></sidebar-offcanvas>
-        </div><!--/col-6-->
-
-        <p class="float-left hidden-md-up">
-          <button type="button" class="btn btn-pink btn-sm" data-toggle="offcanvas" v-on:click="makeActive">Toggle nav  &raquo;</button>
-        </p>
-
-        <div class="col-12 col-md-9">
-
-          <h6 class="text-uppercase text-gray mt-4">About MKTurbo</h6>
-          <h3 class="display-4">MKTurbo LLC, is owned and operated by <strong>Lars Snead</strong>.</h3>
-          <div class="mb-4">
-            <p class="mb-4 text-muted lead">
-              It is a one-man-shop, run by a guy who loves Miatas, out of his own garage.
-            </p>
-            <p class="text-muted">
-              Lars started MKTurbo to serve the budget oriented turbo market for all NA & NB Miatas. He spent <i>years</i> learning about and installing numerous turbo setups on his own Miatas as well as on various friends'. After some time serving the turbo miata community&mdash;figuring out what things you can do cheap, what corners not to cut, and the best way on a budget to boost a stock NA/NB motor&mdash;he applied his knowledge to design a setup that is reasonably priced, while offering an amazing amount of performance for the dollar.
-            </p>
-            <p class="text-muted">
-              All MKTurbo setups are hand-built by Lars Snead himself, in his garage, using steet-driven Miatas to ensure the best fitment possible&mdash;so each setup may be slightly unique in how it is built.
-            </p>
-            <p class="text-muted">
-              MKTurbo sources as many parts as possible from the USA: All flanges are made by a machine shop in Pittsburg, PA, all exhaust piping and v-band assemblies are sourced from Maryland, and all oil lines are sourced and made locally at a hydraulic shop in South Carolina
-            </p>
-          </div>
-
-          <p class="text-muted lead">Contact <a href="mailto:MKturbos@gmail.com">MKturbos@gmail.com</a> for more information or purchasing</p>
-
+        <h6 class="text-uppercase text-gray mt-4">About MKTurbo</h6>
+        <h3 class="display-4">MKTurbo LLC, is owned and operated by <strong>Lars Snead</strong>.</h3>
+        <div class="mb-4">
+          <p class="mb-4 text-muted lead">
+            It is a one-man-shop, run by a guy who loves Miatas, out of his own garage.
+          </p>
+          <p class="text-muted">
+            Lars started MKTurbo to serve the budget oriented turbo market for all NA & NB Miatas. He spent <i>years</i> learning about and installing numerous turbo setups on his own Miatas as well as on various friends'. After some time serving the turbo miata community&mdash;figuring out what things you can do cheap, what corners not to cut, and the best way on a budget to boost a stock NA/NB motor&mdash;he applied his knowledge to design a setup that is reasonably priced, while offering an amazing amount of performance for the dollar.
+          </p>
+          <p class="text-muted">
+            All MKTurbo setups are hand-built by Lars Snead himself, in his garage, using steet-driven Miatas to ensure the best fitment possible&mdash;so each setup may be slightly unique in how it is built.
+          </p>
+          <p class="text-muted">
+            MKTurbo sources as many parts as possible from the USA: All flanges are made by a machine shop in Pittsburg, PA, all exhaust piping and v-band assemblies are sourced from Maryland, and all oil lines are sourced and made locally at a hydraulic shop in South Carolina
+          </p>
         </div>
-    </div><!--/row-->
-  <footer-component :year="year"></footer-component>
 
-  </div><!--/container-->
+        <p class="text-muted lead">Contact <a href="mailto:MKturbos@gmail.com">MKturbos@gmail.com</a> for more information or purchasing</p>
 
-  <modal v-if="showModal" @close="showModal = false" :modal="modal"></modal>
-  <transition name="modal">
-  <div v-if="showModal" class="modal-backdrop" v-cloak></div>
-  </transition>
+
+        <navbar-component :tagline="tagline" slot="header"></navbar-component>
+
+        <sidebar-offcanvas :nav="navigation" :url="url" slot="navigation"></sidebar-offcanvas>
+
+        <footer-component :year="year" slot="footer"></footer-component>
+
+        <modal v-if="showModal" @close="showModal = false" :modal="modal"></modal>
+        <transition name="modal">
+          <div v-if="showModal" class="modal-backdrop" v-cloak></div>
+        </transition>
+
+    </base-layout>
 
   </div> <!--./app-->
 
